@@ -85,6 +85,11 @@
             <artifactId>HikariCP</artifactId>
         </dependency>
 
+        <!--分页-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+        </dependency>
 
         <!--模块依赖-->
         <dependency>
