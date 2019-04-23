@@ -25,29 +25,29 @@
     </filter-mapping>
 
     <!-- 配置springmvc的前端控制器 指向spring-mvc.xml 程序在启动的时候就加载springmvc 可以接受所有请求 load-on-startup：表示启动容器时初始化该Servlet； -->
-    <servlet>
-        <servlet-name>springServlet</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <!-- 可以自定义servlet.xml配置文件的位置和名称， 默认为WEB-INF目录下，名称为[<servlet-name>]-servlet.xml，如spring-servlet.xml -->
-        <init-param>
-            <param-name>contextConfigLocation</param-name>
-            <param-value> classpath:configuration/applicationContext.xml</param-value>
-        </init-param>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>springServlet</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
+    <!--    <servlet>
+            <servlet-name>springServlet</servlet-name>
+            <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+            &lt;!&ndash; 可以自定义servlet.xml配置文件的位置和名称， 默认为WEB-INF目录下，名称为[<servlet-name>]-servlet.xml，如spring-servlet.xml &ndash;&gt;
+            <init-param>
+                <param-name>contextConfigLocation</param-name>
+                <param-value> classpath:configuration/applicationContext.xml</param-value>
+            </init-param>
+            <load-on-startup>1</load-on-startup>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>springServlet</servlet-name>
+            <url-pattern>/</url-pattern>
+        </servlet-mapping>-->
 
     <!--filter在被某格式的url请求触发时（被触发的url格式在web.xml中的filter-mapping部分配置）才会再次响应filter类;
     listener是时刻处于监听状态，并不需要被某格式的url触发，所以不用进行类似于filter-mapping部分的配置-->
     <!-- Spring配置 -->
-    <listener>
-        <listener-class>
-            org.springframework.web.context.ContextLoaderListener
-        </listener-class>
-    </listener>
+    <!--    <listener>
+            <listener-class>
+                org.springframework.web.context.ContextLoaderListener
+            </listener-class>
+        </listener>-->
 
     <!-- 取消对某一类文件的拦截-->
     <servlet-mapping>
@@ -73,14 +73,14 @@
         在监听的类中会有一个contextInitialized(ServletContextEvent event)初始化方法，在这个方法中可以通过event.getServletContext().getInitParameter("contextConfigLocation") 来得到context-param 设定的值。在这个类中还必须有一个contextDestroyed(ServletContextEvent event) 销毁方法.用于关闭应用前释放资源，比如说数据库连接的关闭。
         得到这个context-param的值之后,你就可以做一些操作了.注意,这个时候你的WEB项目还没有完全启动完成.这个动作会比所有的Servlet都要早。
     -->
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value> classpath:configuration/applicationContext.xml</param-value>
-    </context-param>
+    <!--  <context-param>
+          <param-name>contextConfigLocation</param-name>
+          <param-value> classpath:configuration/applicationContext.xml</param-value>
+      </context-param>-->
 
     <!-- 欢迎页面-->
     <welcome-file-list>
-        <welcome-file>/WEB-INF/views/index.jsp</welcome-file>
+        <welcome-file>/helloworld.html</welcome-file>
     </welcome-file-list>
     <!--404错误展示页面，可自行配置-->
     <!--<error-page>-->
