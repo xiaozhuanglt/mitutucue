@@ -2,7 +2,10 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context
+                            http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- jdbc配置 -->
     <context:property-placeholder location="classpath:configuration/jdbc.properties" />
@@ -27,7 +30,7 @@
     <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!--一些配置 如驼峰配置-->
-        <property name="configLocation" value="/configuration/mybatis_config.xml"/>
+        <property name="configLocation" value="classpath:/configuration/mybatis_config.xml"/>
         <!--也可以在这里配置-->
         <property name="configurationProperties">
             <props>
