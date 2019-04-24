@@ -41,10 +41,9 @@
     <!-- 视图解析器
     解析jsp解析，默认使用jstl标签，classpath下的得有jstl的包
      -->
-  <!--  <bean
+    <bean
             class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     </bean>
--->
 
     <!--如果webapp下你新建了文件夹，想访问里面的静态资源，那么就要在这配置一下-->
     <mvc:resources location="/images/" mapping="/images/**"/>
@@ -70,5 +69,15 @@
         &lt;!&ndash; 内存中的最大值 &ndash;&gt;
         <property name="maxInMemorySize" value="40960" />
     </bean>-->
+
+
+    <bean class="springfox.documentation.swagger2.configuration.Swagger2DocumentationConfiguration" id="swagger2Config"/>
+
+    <!-- swagger -->
+    <bean class="config.SwaggerConfig"/>
+    <!--<context:annotation-config/>-->
+    <mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/" />
+    <mvc:resources mapping="/webjars/**"
+                   location="classpath:/META-INF/resources/webjars/" />
 
 </beans>
