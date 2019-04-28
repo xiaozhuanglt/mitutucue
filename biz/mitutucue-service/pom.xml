@@ -69,6 +69,11 @@
         </dependency>
 
         <!-- springframe end -->
+        <dependency>
+            <groupId>com.xiaozhuanglt</groupId>
+            <artifactId>mitutucue-dao</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
     </dependencies>
 

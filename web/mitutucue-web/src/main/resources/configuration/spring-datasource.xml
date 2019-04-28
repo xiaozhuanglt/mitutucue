@@ -11,7 +11,7 @@
     <context:property-placeholder location="classpath:configuration/jdbc.properties" />
 
     <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="shutdown">
-        <!-- <property name="driverClassName" value="${db.driverClass}" /> --> <!-- 无需指定，除非系统无法自动识别 -->
+         <property name="driverClassName" value="${jdbc.driver}" />  <!-- 无需指定，除非系统无法自动识别 -->
         <property name="jdbcUrl" value="${jdbc.url}" />
         <property name="username" value="${jdbc.username}" />
         <property name="password" value="${jdbc.password}" />
@@ -65,7 +65,7 @@
 
     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.xiaozhuanglt.mitutucue.mapper"/>
+        <property name="basePackage" value="com.xiaozhuanglt.mitutucue.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 

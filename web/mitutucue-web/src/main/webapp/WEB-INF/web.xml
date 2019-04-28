@@ -35,6 +35,7 @@
             </init-param>
             <load-on-startup>1</load-on-startup>
         </servlet>
+    <!-- 将前端URL请求和后台处理方法controller建立对应关系-->
         <servlet-mapping>
             <servlet-name>springServlet</servlet-name>
             <url-pattern>/</url-pattern>

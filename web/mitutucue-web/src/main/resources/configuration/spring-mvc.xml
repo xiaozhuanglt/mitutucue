@@ -25,12 +25,20 @@
     that maps handler methods based on HTTP paths, HTTP methods and request parameters expressed through the {@link RequestMapping} annotation.
     这个Bean实现了HandlerAdaper接口，通过@RequestMappingHttp上的Http路径，HttpMethod，请求参数来映射处理类的方法。
     -->
-    <mvc:annotation-driven />
 
- <!--   &lt;!&ndash; 注解映射器 &ndash;&gt;
+    <!--
+    在spring3.1之前使用org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping注解映射器。
+    在spring3.1之后使用org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping注解映射器。
+    在spring3.1之前使用org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter注解适配器。
+    在spring3.1之后使用org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter注解适配器。
+    -->
+
+    <!--<mvc:annotation-driven />-->
+
+    <!-- 注解映射器 -->
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
-    &lt;!&ndash; 注解适配器 &ndash;&gt;
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>-->
+    <!-- 注解适配器 -->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
     <!-- 使用mvc:annotation-driven代替上边注解映射器和注解适配器配置
 	mvc:annotation-driven默认加载很多的参数绑定方法，
 	比如json转换解析器就默认加载了，如果使用mvc:annotation-driven就不用配置上边的
