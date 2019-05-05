@@ -25,6 +25,7 @@ public class ServiceDemoImpl implements ServiceDemo {
      * @Description: 查询地址信息
      * @Param: [areaId]
      */
+    @Override
     public int queryArea(Long areaId) {
         int i = demoDao.selectAreaById(areaId);
         return i;

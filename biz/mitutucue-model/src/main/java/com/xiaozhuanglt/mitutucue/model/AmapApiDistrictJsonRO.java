@@ -36,4 +36,12 @@ public class AmapApiDistrictJsonRO {
      * 修正经纬度
      */
     private String alterCoords;
+    /**
+     * 虚拟主键
+     */
+    private Long virtualId;
+    /**
+     * 虚拟父主键
+     */
+    private Long  virtualParentId;
 }

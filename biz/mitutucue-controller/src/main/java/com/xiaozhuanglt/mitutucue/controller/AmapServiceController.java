@@ -2,6 +2,8 @@ package com.xiaozhuanglt.mitutucue.controller;
 
 import com.xiaozhuanglt.mitutucue.model.AmapApiDistrictJsonRO;
 import com.xiaozhuanglt.mitutucue.service.interfaces.AmapService;
+import com.xiaozhuantlt.mitutucue.common.ExcelUtils;
+import com.xiaozhuantlt.mitutucue.common.ResponseHeaderUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -9,6 +11,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +20,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -32,8 +34,8 @@ public class AmapServiceController {
     @Autowired
     AmapService amapService;
 
-    final String[] lineTransportHeaders= {"行政编码","区域编码","地区名称","级别","中心点坐标","街道code","修正经纬度"};
-    final String[] lineTransportParams= {"citycode","adcode","name","level","center","detailCode","alterCoords"};
+    final String[] lineTransportHeaders= {"行政编码","区域编码","地区名称","级别","中心点坐标","街道code","修正经纬度","虚拟主键","虚拟父主键"};
+    final String[] lineTransportParams= {"citycode","adcode","name","level","center","detailCode","alterCoords","virtualId","virtualParentId"};
 
     @ApiOperation("高德下载行政区域编码")
     @GetMapping("/downloadAmapDistrict")
@@ -50,7 +52,7 @@ public class AmapServiceController {
         String requestUrl = "https://restapi.amap.com/v3/config/district?keywords="+keyEncode+"&subdistrict="+subdistrict+"&key="+key;
         String requestMethod = "GET";
 
-        List<AmapApiDistrictJsonRO> amapApiDistrictJsonROS = amapService.downloadAmapDistrict(requestUrl, requestMethod);
+        List<AmapApiDistrictJsonRO> amapApiDistrictJsonROS = amapService.downloadAmapDistrict(requestUrl, requestMethod,Long.valueOf(0));
         //生成Excel
         try {
             if (createExcel(response, amapApiDistrictJsonROS,keywords)) return;
@@ -68,11 +70,11 @@ public class AmapServiceController {
     @GetMapping("downloadAmapDistrictByProvince")
     public void downloadAmapDistrictByProvince(HttpServletResponse response) throws UnsupportedEncodingException {
 
-        String[] provinces = { "30四川省", "31吉林省", "32天津市", "33云南省", "34北京市"};
+        String[] provinces = { "北京市","天津市","河北省","山西省","内蒙古自治区","辽宁省","吉林省","黑龙江省","上海市","江苏省","浙江省","安徽省","福建省","江西省","山东省","河南省","湖北省","湖南省","广东省","广西壮族自治区","海南省","重庆市","四川省","贵州省","云南省","西藏自治区","陕西省","甘肃省","青海省","宁夏回族自治区","新疆维吾尔自治区","台湾省","香港特别行政区","澳门特别行政区"};
 
-        String[] testProvinces = {"1山西省","2内蒙古自治区", "3广东省","4河南省", "5黑龙江省", "6新疆维吾尔自治区", "7湖北省", "8辽宁省", "9山东省", "10陕西省", "11上海市", "12贵州省",
+        String[] testProvinces = {"山西省","内蒙古自治区", "广东省","河南省", "5黑龙江省", "6新疆维吾尔自治区", "7湖北省", "8辽宁省", "9山东省", "10陕西省", "11上海市", "12贵州省",
                 "13重庆市", "14西藏自治区", "15安徽省", "16福建省", "17湖南省", "18海南省", "19江苏省", "20青海省", "21广西壮族自治区", "22宁夏回族自治区", "23江西省", "24浙江省", "25河北省",
-                "26澳门特别行政区", "27台湾省", "28香港特别行政区", "29甘肃省",};
+                "澳门特别行政区", "台湾省", "香港特别行政区", "甘肃省",};
 
         for(int i=0;i<provinces.length;i++){
             try {
@@ -98,7 +100,7 @@ public class AmapServiceController {
         String requestMethod = "GET";
         Object lock = new Object();
 
-        List<AmapApiDistrictJsonRO> amapApiDistrictJsonROS = amapService.downloadAmapDistrict(requestUrl, requestMethod);
+        List<AmapApiDistrictJsonRO> amapApiDistrictJsonROS = amapService.downloadAmapDistrict(requestUrl, requestMethod,Long.valueOf(0));
         //存放新增地区对象
         List<AmapApiDistrictJsonRO> newAmapApiDistrictJsonROS = new ArrayList<AmapApiDistrictJsonRO>();
         //街道上一级
@@ -119,11 +121,11 @@ public class AmapServiceController {
                     if (amapApiDistrictJsonRO.getLevel().contains("district")){
                         district = amapApiDistrictJsonRO.getName();
                     }
-
+/*
                     //市级街道数据
                     if (amapApiDistrictJsonRO.getLevel().contains("street")){
                         getStreetTownCode(key, requestMethod, amapApiDistrictJsonRO,city,district);
-                    }
+                    }*/
 
                 }else {
                     System.out.print(amapApiDistrictJsonRO);
@@ -136,7 +138,7 @@ public class AmapServiceController {
         //生成Excel
         try {
 
-            if (createExcel(response, amapApiDistrictJsonROS,keywords)) return;
+            if (createExcel(response, amapApiDistrictJsonROS,keywords)) {return;}
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -164,7 +166,7 @@ public class AmapServiceController {
         //存放街道级数据
         List<AmapApiDistrictJsonRO> streetROs;
         requestUrl = "https://restapi.amap.com/v3/config/district?keywords="+amapApiDistrictJsonRO.getAdcode()+"&subdistrict="+subdistrict+"&key="+key;
-        streetROs = amapService.downloadAmapDistrict(requestUrl, requestMethod);
+        streetROs = amapService.downloadAmapDistrict(requestUrl, requestMethod,Long.valueOf(0));
         if (!streetROs.isEmpty()){
             for (AmapApiDistrictJsonRO streetRO :streetROs){
                 if (StringUtils.isNotEmpty(streetRO.getLevel())){
@@ -256,7 +258,7 @@ public class AmapServiceController {
 
     private boolean createExcel(HttpServletResponse response, List<AmapApiDistrictJsonRO> amapApiDistrictJsonROS,String keywords) throws IOException {
         long time = System.currentTimeMillis();
-        File writename = new File("C:\\Users\\Administrator\\Desktop\\工作文档\\全国省市县区街道社区数据库\\"+"amap_adcode_"+keywords+String.valueOf(time) +".xlsx");
+        File writename = new File("C:\\Users\\Administrator\\Desktop\\工作文档\\全国省市县区街道社区数据库\\20190505\\"+"amap_adcode_"+keywords+String.valueOf(time) +".xlsx");
         // 防止文件建立或读取失败，用catch捕捉错误并打印，也可以throw
         writename.createNewFile(); // 创建新文件
         OutputStream os = new FileOutputStream(writename);
@@ -296,7 +298,7 @@ public class AmapServiceController {
         long time = System.currentTimeMillis();
         /* 写入Txt文件 */
         // 相对路径，如果没有则要建立一个新的output。txt文件
-        File writename = new File("C:\\Users\\Administrator\\Desktop\\工作文档\\全国省市县区街道社区数据库\\"+keywords+String.valueOf(time) +".txt");
+        File writename = new File("C:\\Users\\Administrator\\Desktop\\工作文档\\全国省市县区街道社区数据库\\20190505\\"+keywords+String.valueOf(time) +".txt");
         // 防止文件建立或读取失败，用catch捕捉错误并打印，也可以throw
         writename.createNewFile(); // 创建新文件
         BufferedWriter out = new BufferedWriter(new FileWriter(writename));

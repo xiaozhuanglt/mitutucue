@@ -1,6 +1,9 @@
 package com.xiaozhuanglt.mitutucue.service.impl;
 
+import com.xiaozhuanglt.mitutucue.model.AmapApiDistrictJsonRO;
 import com.xiaozhuanglt.mitutucue.service.interfaces.AmapService;
+import com.xiaozhuantlt.mitutucue.common.HttpRequestUtil;
+import com.xiaozhuantlt.mitutucue.common.IncrementalEncoder;
 import net.sf.cglib.beans.BeanMap;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -20,12 +23,6 @@ import java.util.concurrent.Executors;
 @Service("amapService")
 public class AmapServiceImpl implements AmapService {
 
-    /**
-     * 终端名称前缀
-     */
-    private static final String TERMINAL_NAME_PREFIX=  Insight.props().getString("terminal_name_prefix") == null?"driver_":Insight.props().getString("terminal_name_prefix");
-
-    private static ExecutorService executor             = Executors.newFixedThreadPool(1);
 
     /**
      * @author hxz
@@ -35,10 +32,10 @@ public class AmapServiceImpl implements AmapService {
      * @return {@link List< AmapApiDistrictJsonRO >}
      */
     @Override
-    public List<AmapApiDistrictJsonRO> downloadAmapDistrict(String requestUrl, String requestMethod) {
+    public List<AmapApiDistrictJsonRO> downloadAmapDistrict(String requestUrl, String requestMethod,Long virtualParentId) {
         List<AmapApiDistrictJsonRO> amapApiDistrictJsonROS = new ArrayList<>();
         JSONArray jsonArray = HttpRequestUtil.httpsRequest(requestUrl, requestMethod);
-        traversejSONArray(amapApiDistrictJsonROS,jsonArray);
+        traversejSONArray(amapApiDistrictJsonROS,jsonArray,virtualParentId);
         return amapApiDistrictJsonROS;
     }
 
@@ -106,7 +103,7 @@ public class AmapServiceImpl implements AmapService {
      *
      * 遍历JsonArray
      */
-    public void traversejSONArray(List<AmapApiDistrictJsonRO> amapApiDistrictJsonROS,JSONArray jsonArrays){
+    public void traversejSONArray(List<AmapApiDistrictJsonRO> amapApiDistrictJsonROS,JSONArray jsonArrays,Long virtualParentId){
 
         if (!jsonArrays.isEmpty()){
             for (int i=0; i<jsonArrays.size(); i++){
@@ -123,12 +120,16 @@ public class AmapServiceImpl implements AmapService {
                     //内部嵌套，递归解析
                     if (o instanceof JSONArray){
                         if (!((JSONArray) o).isEmpty()){
-                            traversejSONArray(amapApiDistrictJsonROS,(JSONArray) o);
+                            traversejSONArray(amapApiDistrictJsonROS,(JSONArray) o,beanMap.get("virtualId") == null? virtualParentId : (Long) beanMap.get("virtualId"));
                         }
                     }else {
                         //判断组装属性
                         if (key.contains("citycode") || key.contains("adcode") || key.contains("name") || key.contains("level") || key.contains("center")){
                             beanMap.put(key,o);
+                            if (beanMap.get("virtualId") == null){
+                                beanMap.put("virtualId", IncrementalEncoder.getEncoder());
+                                beanMap.put("virtualParentId",virtualParentId);
+                            }
                         }
                     }
                 }
