@@ -76,19 +76,33 @@ public class AmapServiceController {
                 "13重庆市", "14西藏自治区", "15安徽省", "16福建省", "17湖南省", "18海南省", "19江苏省", "20青海省", "21广西壮族自治区", "22宁夏回族自治区", "23江西省", "24浙江省", "25河北省",
                 "澳门特别行政区", "台湾省", "香港特别行政区", "甘肃省",};
 
+        List<AmapApiDistrictJsonRO> amapApiDistrictJsonROS = new ArrayList<>();
         for(int i=0;i<provinces.length;i++){
             try {
-                downloadStreetCode(response,provinces[i],"3");
+                downloadStreetCode(response,provinces[i],"3",amapApiDistrictJsonROS);
                 System.out.print("完成"+provinces[i]+"导出");
             }catch (Exception e){
                 System.out.print(provinces[i]+"未完成"+e);
             }
         }
+        //生成Excel
+        try {
+
+            createExcel(response, amapApiDistrictJsonROS,"高德省市区街道数据");
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        //生成文件流
+        try {
+            createText(amapApiDistrictJsonROS,"高德省市区街道数据");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @ApiOperation("查询高德四级行政区划")
     @GetMapping("/downloadStreetCode")
-    public void downloadStreetCode(HttpServletResponse response,String keywords, String  subdistrict) throws UnsupportedEncodingException {
+    public void downloadStreetCode(HttpServletResponse response,String keywords, String  subdistrict,List<AmapApiDistrictJsonRO> amapApiDistrictJsonSum) throws UnsupportedEncodingException {
 
         //需要把汉字转成UTF-8 编码
         String keyEncode = null;
@@ -134,8 +148,9 @@ public class AmapServiceController {
         }
 
         amapApiDistrictJsonROS.addAll(newAmapApiDistrictJsonROS);
+        amapApiDistrictJsonSum.addAll(amapApiDistrictJsonROS);
 
-        //生成Excel
+      /*  //生成Excel
         try {
 
             if (createExcel(response, amapApiDistrictJsonROS,keywords)) {return;}
@@ -147,7 +162,7 @@ public class AmapServiceController {
             createText(amapApiDistrictJsonROS,keywords);
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
 

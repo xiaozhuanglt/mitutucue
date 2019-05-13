@@ -10,7 +10,7 @@
     <!-- jdbc配置 -->
     <context:property-placeholder location="classpath:configuration/jdbc.properties" />
 
-    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="shutdown">
+    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" >
          <property name="driverClassName" value="${jdbc.driver}" />  <!-- 无需指定，除非系统无法自动识别 -->
         <property name="jdbcUrl" value="${jdbc.url}" />
         <property name="username" value="${jdbc.username}" />
