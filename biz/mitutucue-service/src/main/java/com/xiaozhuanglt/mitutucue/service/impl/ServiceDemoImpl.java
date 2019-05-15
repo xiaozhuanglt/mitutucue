@@ -29,5 +29,7 @@ public class ServiceDemoImpl implements ServiceDemo {
     public int queryArea(Long areaId) {
         int i = demoDao.selectAreaById(areaId);
         return i;
+
+
     }
 }
