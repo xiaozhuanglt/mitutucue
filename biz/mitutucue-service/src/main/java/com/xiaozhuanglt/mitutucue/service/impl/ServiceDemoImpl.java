@@ -30,6 +30,5 @@ public class ServiceDemoImpl implements ServiceDemo {
         int i = demoDao.selectAreaById(areaId);
         return i;
 
-
     }
 }
