@@ -234,6 +234,11 @@
                 <artifactId>netty-all</artifactId>
                 <version>4.1.36.Final</version>
             </dependency>
+            <dependency>
+                <groupId>com.github.sgroschupf</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>0.1</version>
+            </dependency>
 
             <!--模块声明-->
             <dependency>

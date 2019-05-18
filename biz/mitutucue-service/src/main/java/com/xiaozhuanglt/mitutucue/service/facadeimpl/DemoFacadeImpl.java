@@ -1,6 +1,6 @@
-package com.xiaozhuanglt.mitutucue.facade.facadeimpl;
+package com.xiaozhuanglt.mitutucue.service.facadeimpl;
 
-import com.xiaozhuanglt.mitutucue.facade.facade.DemoFacade;
+import com.xiaozhuanglt.mitutucue.facade.DemoFacade;
 import com.xiaozhuanglt.mitutucue.service.interfaces.ServiceDemo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

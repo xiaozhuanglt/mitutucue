@@ -1,4 +1,4 @@
-package com.xiaozhuanglt.mitutucue.facade.facade;
+package com.xiaozhuanglt.mitutucue.facade;
 
 /**
  * @description: dubbo接口测试

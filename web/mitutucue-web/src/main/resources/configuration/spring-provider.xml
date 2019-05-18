@@ -9,7 +9,7 @@
 
     <description>Dubbo Demo Service</description>
     <!-- 提供方应用信息，用于计算依赖关系 -->
-    <dubbo:application name="dubbo-mitutucue-provider" />
+    <dubbo:application name="dubbo-mitutucue" />
 
     <!-- 使用zookeeper注册中心暴露服务地址 -->
     <dubbo:registry protocol="zookeeper" address="39.108.13.71:2181"
@@ -19,8 +19,12 @@
     <dubbo:protocol id="dubbo" name="dubbo" port="20880" threadpool="cached" threads="100" />
 
    <!-- &lt;!&ndash; Greeting服务 -->
-    <bean id="demoFacade" class="com.xiaozhuanglt.mitutucue.facade.facadeimpl.DemoFacadeImpl" />
-    <dubbo:service  interface="com.xiaozhuanglt.mitutucue.facade.facade.DemoFacade" ref="demoFacade"  />
+    <!--<bean id="demoFacade" class="com.xiaozhuanglt.mitutucue.facade.facadeimpl.DemoFacadeImpl" />-->
+    <!--<dubbo:service interface="com.xiaozhuanglt.mitutucue.facade.DemoFacade" ref="demoFacade"  />-->
+
+    <dubbo:service
+            interface="com.xiaozhuanglt.mitutucue.facade.DemoFacade"
+            ref="demoFacade" protocol="dubbo" version="1.0.0" delay="-1" timeout="20000" />
 
     <!--&lt;!&ndash; 声明需要暴露的服务接口 &ndash;&gt;-->
     <!--<dubbo:reference  id="demoFacade" interface="com.xiaozhuanglt.mitutucue.facade.facadeimpl.DemoFacadeImpl" version="1.0.0" timeout="50000" check="false"/>-->
