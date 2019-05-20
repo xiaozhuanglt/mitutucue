@@ -107,29 +107,34 @@
 
         <!-- Dubbo相关 -->
         <!--dubbo 2.7以下版本-->
-        <dependency>
+        <!--<dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
-        </dependency>
+        </dependency>-->
         <!--end-->
         <!--dubbo 2.7以上版本-->
-        <!--<dependency>
+        <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-dependencies-bom</artifactId>
+            <version>2.7.1</version>
             <type>pom</type>
+            <scope>import</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo</artifactId>
+            <version>2.7.1</version>
         </dependency>
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-framework</artifactId>
+            <version>4.1.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-recipes</artifactId>
-        </dependency>-->
+            <version>4.1.0</version>
+        </dependency>
         <!--end-->
         <dependency>
             <groupId>org.javassist</groupId>
