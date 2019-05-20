@@ -211,23 +211,6 @@
                 <artifactId>javassist</artifactId>
                 <version>3.18.1-GA</version>
             </dependency>
-            <!--dubbo依赖-->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>dubbo</artifactId>
-                <version>2.6.6</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.zookeeper</groupId>
-                <artifactId>zookeeper</artifactId>
-                <version>3.5.4-beta</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.netty</groupId>
-                <artifactId>netty</artifactId>
-                <version>3.2.10.Final</version>
-                <type>bundle</type>
-            </dependency>
             <!-- https://mvnrepository.com/artifact/io.netty/netty -->
             <dependency>
                 <groupId>io.netty</groupId>
@@ -238,6 +221,49 @@
                 <groupId>com.github.sgroschupf</groupId>
                 <artifactId>zkclient</artifactId>
                 <version>0.1</version>
+            </dependency>
+
+            <!--dubbo依赖 2.7以下版本-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>2.6.6</version>
+            </dependency>
+            <!--end-->
+            <!--dubbo 2.7以上版本-->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-dependencies-bom</artifactId>
+                <version>2.7.1</version>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>2.7.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>4.2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>4.2.0</version>
+                <type>bundle</type>
+            </dependency>
+            <!--end-->
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>3.5.4-beta</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.netty</groupId>
+                <artifactId>netty</artifactId>
+                <version>3.2.10.Final</version>
+                <type>bundle</type>
             </dependency>
 
             <!--模块声明-->

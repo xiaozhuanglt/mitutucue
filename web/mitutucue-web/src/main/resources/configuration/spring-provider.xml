@@ -11,9 +11,20 @@
     <!-- 提供方应用信息，用于计算依赖关系 -->
     <dubbo:application name="dubbo-mitutucue" />
 
-    <!-- 使用zookeeper注册中心暴露服务地址 -->
-    <dubbo:registry protocol="zookeeper" address="39.108.13.71:2181"
-                    client="zkclient" />
+    <!-- simplified="true"表示注册简化版的URL到Registry，URL简化只是剔除了一些纯粹的查询用的参数，并没有做大刀阔斧的服务发现模型改造，
+    因此精简后的URL完全可以被2.6及以下版本的消费端实现服务发现与调用，同样2.7版本也可以发现和调用低版本的提供者。 -->
+    <!--<dubbo:registry address="zookeeper://127.0.0.1:2181" simplified="true"/>-->
+
+     <!--使用zookeeper注册中心暴露服务地址-->
+    <dubbo:registry protocol="zookeeper" address="39.108.13.71:2181" client="zkclient" />
+<!--
+    &lt;!&ndash;2.7版本开始将注册中心分为3部分&ndash;&gt;
+    &lt;!&ndash;配置中心&ndash;&gt;
+    <dubbo:config-center address="zookeeper://39.108.13.71:2181"/>
+   &lt;!&ndash;注册中心&ndash;&gt;
+    <dubbo:registry address="zookeeper://39.108.13.71:2181" simplified="true"/>
+    &lt;!&ndash;源数据&ndash;&gt;
+    <dubbo:metadata-report address="redis://39.108.13.71:2181"/>-->
 
     <!-- dubbo缓存 -->
     <dubbo:protocol id="dubbo" name="dubbo" port="20880" threadpool="cached" threads="100" />
