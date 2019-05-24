@@ -2,7 +2,7 @@
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-         version="3.1">
+         version="3.1" metadata-complete="true">
     <display-name>hello mitutu</display-name>
     <!--配置编码方式-->
     <!--过滤器-->
@@ -49,6 +49,31 @@
                 org.springframework.web.context.ContextLoaderListener
             </listener-class>
         </listener>
+
+
+    <!-- log4j2-begin -->
+    <!--log4j2.xml路径 路径配置不起作用，后续研究吧-->
+    <context-param>
+        <param-name>log4jConfiguration</param-name>
+        <param-value>classpath:configuration/log4j2.xml</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
+    </listener>
+    <filter>
+        <filter-name>log4jServletFilter</filter-name>
+        <filter-class>org.apache.logging.log4j.web.Log4jServletFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>log4jServletFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+    <!-- log4j2-end -->
+
 
     <!-- 取消对某一类文件的拦截-->
     <servlet-mapping>
