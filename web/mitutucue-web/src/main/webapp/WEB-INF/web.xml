@@ -57,7 +57,7 @@
         <param-name>log4jConfiguration</param-name>
         <param-value>classpath:configuration/log4j2.xml</param-value>
     </context-param>
-    <listener>
+  <!--  <listener>
         <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
     </listener>
     <filter>
@@ -71,7 +71,7 @@
         <dispatcher>FORWARD</dispatcher>
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>ERROR</dispatcher>
-    </filter-mapping>
+    </filter-mapping>-->
     <!-- log4j2-end -->
 
 

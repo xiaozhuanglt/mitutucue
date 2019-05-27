@@ -19,11 +19,11 @@
 
     <!--2.7版本开始将注册中心分为3部分-->
     <!--配置中心-->
-    <dubbo:config-center address="zookeeper://39.108.13.71:2181" check="false"/>
+    <dubbo:config-center address="zookeeper://39.108.13.71:2181" check="false" timeout="1000"/>
    <!--注册中心-->
-    <dubbo:registry address="zookeeper://39.108.13.71:2181" check="false"/>
+    <dubbo:registry address="zookeeper://39.108.13.71:2181" check="false" timeout="1000" client="curator" />
     <!--源数据-->
-    <dubbo:metadata-report address="zookeeper://39.108.13.71:2181" />
+    <dubbo:metadata-report address="zookeeper://39.108.13.71:2181" timeout="1000"/>
 
    <!-- &lt;!&ndash; Greeting服务 -->
     <!--<bean id="demoFacade" class="com.xiaozhuanglt.mitutucue.facade.facadeimpl.DemoFacadeImpl" />-->

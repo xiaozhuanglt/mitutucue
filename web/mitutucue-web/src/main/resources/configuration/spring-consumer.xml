@@ -3,6 +3,6 @@
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
-    <dubbo:registry group="aaa" address="zookeeper://39.108.13.71:2181"/>
+    <dubbo:registry group="aaa" address="zookeeper://39.108.13.71:2181" check="false"/>
     <!--<dubbo:reference id="demoFacade" check="false" interface="com.xiaozhuanglt.mitutucue.facade.DemoFacade"/>-->
 </beans>

@@ -2,6 +2,8 @@ package com.xiaozhuanglt.mitutucue.service.impl;
 
 import com.xiaozhuanglt.mitutucue.dao.DemoDao;
 import com.xiaozhuanglt.mitutucue.service.interfaces.ServiceDemo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,8 @@ import org.springframework.stereotype.Service;
 
 @Service("serviceDemo")
 public class ServiceDemoImpl implements ServiceDemo {
+
+    Logger logger = LoggerFactory.getLogger(ServiceDemoImpl.class);
 
     @Autowired
     DemoDao demoDao;
@@ -27,8 +31,15 @@ public class ServiceDemoImpl implements ServiceDemo {
      */
     @Override
     public int queryArea(Long areaId) {
-        int i = demoDao.selectAreaById(areaId);
-        return i;
+
+        try {
+            int i = demoDao.selectAreaById(areaId);
+            return i;
+        }catch (Exception e){
+            logger.error(e.getMessage());
+            System.out.println(e);
+            return -1;
+        }
 
     }
 }

@@ -153,11 +153,11 @@
             <artifactId>zookeeper</artifactId>
         </dependency>
         <!-- ZK-client -->
-        <dependency>
+        <!--<dependency>
             <groupId>com.github.sgroschupf</groupId>
             <artifactId>zkclient</artifactId>
             <version>0.1</version>
-        </dependency>
+        </dependency>-->
 
         <!--log4j2-->
         <dependency>
