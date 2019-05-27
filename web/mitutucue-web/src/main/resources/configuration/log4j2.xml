@@ -58,4 +58,14 @@
             <appender-ref ref="RollingFileError"/>
         </root>
     </loggers>
+    <Loggers>
+        <Root level="error">
+            <AppenderRef ref="Console"/>
+        </Root>
+        <!--为dao mapper所在的包，level为TRACE-->
+        <Logger name="com.xiaozhuanglt.mitutucue.dao" level="TRACE" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+    </Loggers>
+
 </configuration>
