@@ -13,7 +13,7 @@
         <!--接口版本-->
         <mitutucue-facade-version>1.0-SNAPSHOT</mitutucue-facade-version>
         <!-- spring版本号 -->
-        <spring.version>5.1.6.RELEASE</spring.version>
+        <spring.version>5.2.3.RELEASE</spring.version>
         <mybatis.version>3.4.5</mybatis.version>
         <!--项目统一字符集编码-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

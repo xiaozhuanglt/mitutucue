@@ -74,7 +74,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>5.1.6.RELEASE</version>
+            <version>5.2.3.RELEASE</version>
         </dependency>
 
         <!--servlet 包-->
