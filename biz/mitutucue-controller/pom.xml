@@ -6,13 +6,14 @@
 
     <groupId>com.xiaozhuanglt</groupId>
     <artifactId>mitutucue-controller</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <parent>
         <groupId>com.xiaozhuanglt</groupId>
         <artifactId>mitutucue</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0</version>
+        <relativePath>../..</relativePath>
     </parent>
 
     <dependencies>
@@ -72,13 +73,8 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.8.0-beta4</version>
         </dependency>
 
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-        </dependency>
         <!--集合工具-->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -126,17 +122,17 @@
         <dependency>
             <groupId>com.xiaozhuanglt</groupId>
             <artifactId>mitutucue-service</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.xiaozhuanglt</groupId>
             <artifactId>mitutucue-model</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.xiaozhuanglt</groupId>
             <artifactId>mitutucue-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0.0</version>
         </dependency>
 
     </dependencies>
