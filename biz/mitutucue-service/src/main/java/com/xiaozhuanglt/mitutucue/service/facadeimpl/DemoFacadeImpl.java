@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
  * @author: hxz
  * @create: 2019-05-03 23:30
  **/
-@Service("demoFacade")
 public class DemoFacadeImpl implements DemoFacade {
 
     @Autowired
