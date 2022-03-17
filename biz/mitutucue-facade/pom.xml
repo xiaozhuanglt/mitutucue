@@ -10,7 +10,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.xiaozhuanglt</groupId>
     <artifactId>mitutucue-facade</artifactId>
+    <version>1.0.0</version>
 
     <dependencies>
         <!--引入Spring依赖包 -->

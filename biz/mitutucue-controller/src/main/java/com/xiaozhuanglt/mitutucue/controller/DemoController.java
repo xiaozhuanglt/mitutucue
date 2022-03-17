@@ -3,10 +3,16 @@ package com.xiaozhuanglt.mitutucue.controller;
 import com.xiaozhuanglt.mitutucue.service.interfaces.ServiceDemo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import net.sf.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @description: 框架测试
@@ -34,5 +40,17 @@ public class DemoController {
     public int queryArea(Long areaId){
         int i = serviceDemo.queryArea(areaId);
         return i;
+    }
+
+    public static void main(String[] args) {
+//        Map<Long, List<String>> map = new HashMap<>();
+//        map.put(1L, Arrays.asList("1"));
+//        map.put(2L,Arrays.asList("2"));
+//        List<String> strings = map.get(3);
+//        System.out.println(strings);
+
+        String jsonStr = new String("[{\"accId\":\"704368\",\"sortingAmount\":2,\"depOrderId\":\"0013,NCG2907181726111551\"}]");
+        JSONArray jsonArray = JSONArray.fromObject(jsonStr);
+        System.out.println(jsonArray);
     }
 }
