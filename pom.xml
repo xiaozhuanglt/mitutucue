@@ -366,7 +366,8 @@
                     <execution>
                         <id>test-compile</id>
                         <phase>test-compile</phase>
-                        <goals>                            <goal>test-compile</goal>
+                        <goals>
+                            <goal>test-compile</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -387,6 +388,20 @@
         </plugins>
     </build>
 
+    <repositories>
+        <repository>
+            <id>maven-ali</id>
+            <url>http://maven.aliyun.com/nexus/content/repositories/central</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>fail</checksumPolicy>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <modules>
         <module>web/mitutucue-web</module>

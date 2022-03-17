@@ -13,6 +13,7 @@ gen
 **/CVS/*
 .cvsignore
 */.cvsignore
+*/.idea/*
 
 
 
