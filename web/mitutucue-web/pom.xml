@@ -122,13 +122,6 @@
             <artifactId>netty-all</artifactId>
         </dependency>
 
-        <!-- ZK-client -->
-        <!--<dependency>
-            <groupId>com.github.sgroschupf</groupId>
-            <artifactId>zkclient</artifactId>
-            <version>0.1</version>
-        </dependency>-->
-
         <!--log4j2-->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -214,26 +207,19 @@
 
         <!--dubbo依赖 -->
         <dependency>
-            <artifactId>dubbo</artifactId>
             <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo</artifactId>
         </dependency>
-        <!--end-->
 
-        <!-- Dubbo Nacos registry dependency -->
         <dependency>
-            <groupId>com.alibaba</groupId>
+            <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-registry-nacos</artifactId>
         </dependency>
-
-        <!-- Keep latest Nacos client version -->
         <dependency>
-            <groupId>com.alibaba.nacos</groupId>
-            <artifactId>nacos-client</artifactId>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-configcenter-nacos</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>dubbo</artifactId>
-        </dependency>
+        <!--end-->
 
         <!-- Alibaba Spring Context extension -->
         <dependency>
