@@ -6,11 +6,11 @@
    <!-- <dubbo:registry group="aaa" address="zookeeper://39.108.13.71:2181" check="false"/>-->
     <!--2.7版本开始将注册中心分为3部分-->
     <!--配置中心-->
-    <dubbo:config-center address="nacos://120.46.223.251:8848" check="false" timeout="1000"/>
+    <dubbo:config-center address="nacos://127.0.0.1:8848" timeout="1000"/>
     <!--注册中心-->
-    <dubbo:registry address="nacos://120.46.223.251:8848" check="false" timeout="1000"  group="dubbo" />
+    <dubbo:registry address="nacos://127.0.0.1:8848" timeout="1000"  group="dubbo" />
     <!--源数据-->
-    <dubbo:metadata-report address="nacos://120.46.223.251:8848" timeout="1000" group="dubbo"/>
+    <dubbo:metadata-report address="nacos://127.0.0.1:8848" timeout="1000" group="dubbo"/>
    <!-- <dubbo:reference id="demoFacade" check="false" interface="com.xiaozhuanglt.mitutucue.facade.DemoFacade"/>-->
 
 </beans>

@@ -67,11 +67,6 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
-                <artifactId>spring-context-support</artifactId>
-                <version>4.3.18.RELEASE</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
                 <version>${spring.version}</version>
             </dependency>
@@ -244,13 +239,6 @@
                 <version>4.1.36.Final</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.jboss.netty</groupId>
-                <artifactId>netty</artifactId>
-                <version>3.2.10.Final</version>
-                <type>bundle</type>
-            </dependency>
-
             <!--模块声明-->
             <dependency>
                 <groupId>com.xiaozhuanglt</groupId>
@@ -266,14 +254,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>org.apache.dubbo</groupId>
-                <artifactId>dubbo-registry-nacos</artifactId>
-                <version>${dubbo.version}</version>
-            </dependency>
             <!--end-->
-
-            <!-- Dubbo Nacos registry dependency -->
 
             <!-- Alibaba Spring Context extension -->
             <dependency>
