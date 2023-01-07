@@ -7,6 +7,7 @@
     <description>Dubbo Demo Service</description>
     <!-- 提供方应用信息，用于计算依赖关系 -->
     <dubbo:application name="nacos-registry-provider" />
+    <dubbo:provider token="true"/>
     <!-- 用dubbo协议在随机端口暴露服务 -->
     <dubbo:protocol id="dubbo" name="dubbo" port="-1"/>
 
@@ -19,17 +20,16 @@
 
     <!--2.7版本开始将注册中心分为3部分-->
    <!--注册中心-->
-    <dubbo:registry address="nacos://172.34.90.10:8848"  timeout="1000" />
+    <dubbo:registry address="nacos://127.0.0.1:8848"  timeout="1000" />
     <!--配置中心-->
-    <dubbo:config-center address="nacos://172.34.90.10:8848" timeout="1000" />
+    <dubbo:config-center address="nacos://127.0.0.1:8848" timeout="1000" />
     <!--源数据-->
-    <dubbo:metadata-report address="nacos://172.34.90.10:8848" timeout="1000"/>
+    <dubbo:metadata-report address="nacos://127.0.0.1:8848" timeout="1000"/>
 
    <!-- &lt;!&ndash; Greeting服务 -->
     <bean id="demoFacade" class="com.xiaozhuanglt.mitutucue.service.facadeimpl.DemoFacadeImpl" />
-<!--
-    <dubbo:service interface="com.xiaozhuanglt.mitutucue.facade.DemoFacade" ref="demoFacade"/>
--->
 
-    <dubbo:service interface="com.xiaozhuanglt.mitutucue.facade.DemoFacade" ref="demoFacade" protocol="dubbo" version="1.0.0" delay="-1" timeout="20000" />
+    <dubbo:service interface="com.xiaozhuanglt.mitutucue.facade.DemoFacade" ref="demoFacade" version="1.0.0" group="dubbo"/>
+
+    <!--<dubbo:service interface="com.xiaozhuanglt.mitutucue.facade.DemoFacade" ref="demoFacade" protocol="dubbo" version="1.0.0" delay="-1" timeout="20000" />-->
 </beans>

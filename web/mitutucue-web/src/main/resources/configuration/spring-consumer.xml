@@ -5,18 +5,18 @@
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
    <!-- <dubbo:registry group="aaa" address="zookeeper://39.108.13.71:2181" check="false"/>-->
     <!--2.7版本开始将注册中心分为3部分-->
-    <!--配置中心-->
-<!--
-    <dubbo:config-center address="nacos://172.34.90.10:8848" timeout="1000"/>
--->
     <!--注册中心-->
-<!--
-    <dubbo:registry address="nacos://172.34.90.10:8848" timeout="1000"  group="dubbo" />
--->
+<!--    <dubbo:registry address="nacos://172.34.90.223:8848" timeout="1000"  group="dubbo" />-->
+    <!--配置中心-->
+    <!--
+        <dubbo:config-center address="nacos://172.34.90.10:8848" timeout="1000"/>
+        -->
     <!--源数据-->
 <!--
     <dubbo:metadata-report address="nacos://172.34.90.10:8848" timeout="1000" group="dubbo"/>
 -->
-   <!-- <dubbo:reference id="demoFacade" check="false" interface="com.xiaozhuanglt.mitutucue.facade.DemoFacade"/>-->
+<!--
+    <dubbo:reference id="demoFacade" check="true" interface="com.xiaozhuanglt.mitutucue.facade.DemoFacade"/>
+-->
 
 </beans>
