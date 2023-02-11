@@ -1,4 +1,4 @@
-package com.xiaozhuantlt.mitutucue.common;
+package com.xiaozhuanglt.mitutucue.common;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;

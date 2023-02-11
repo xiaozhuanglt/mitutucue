@@ -52,7 +52,6 @@
 
 
     <!-- log4j2-begin -->
-    <!--log4j2.xml路径 路径配置不起作用，后续研究吧-->
     <context-param>
         <param-name>log4jConfiguration</param-name>
         <param-value>classpath:configuration/log4j2.xml</param-value>

@@ -279,24 +279,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!--&lt;!&ndash;zookeeper&ndash;&gt;
-        <dependency>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-            <version>3.4.13</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>log4j</groupId>
-                    <artifactId>log4j</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>-->
-
-        <dependency>
-            <groupId>com.netflix.curator</groupId>
-            <artifactId>curator-framework</artifactId>
-            <version>1.1.10</version>
-        </dependency>
         <!--end-->
 
     </dependencies>

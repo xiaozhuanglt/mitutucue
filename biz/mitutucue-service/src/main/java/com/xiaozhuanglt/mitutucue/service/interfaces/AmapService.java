@@ -21,7 +21,7 @@ public interface AmapService {
      *
      * 下载高德行政区划，省、市、区
      */
-    List<AmapApiDistrictJsonRO> downloadAmapDistrict(String requestUrl, String requestMethod,Long virtualParentId);
+    List<AmapApiDistrictJsonRO> downloadAmapDistrict(String requestUrl, String requestMethod, Long virtualParentId);
 
     /**
      * @author hxz

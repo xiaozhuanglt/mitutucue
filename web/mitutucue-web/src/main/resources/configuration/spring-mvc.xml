@@ -86,7 +86,7 @@
     <bean class="springfox.documentation.swagger2.configuration.Swagger2DocumentationConfiguration" id="swagger2Config"/>
 
     <!-- swagger -->
-    <bean class="config.SwaggerConfig"/>
+    <bean class="com.xiaozhuanglt.mitutucue.config.SwaggerConfig"/>
     <!--<context:annotation-config/>-->
     <mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/" />
     <mvc:resources mapping="/webjars/**"

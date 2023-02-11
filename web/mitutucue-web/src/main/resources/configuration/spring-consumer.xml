@@ -16,7 +16,7 @@
     <dubbo:metadata-report address="nacos://172.34.90.10:8848" timeout="1000" group="dubbo"/>
 -->
 <!--
-    <dubbo:reference id="demoFacade" check="true" interface="com.xiaozhuanglt.mitutucue.facade.DemoFacade"/>
+    <dubbo:reference id="demoFacade" check="true" interface="DemoFacade"/>
 -->
 
 </beans>

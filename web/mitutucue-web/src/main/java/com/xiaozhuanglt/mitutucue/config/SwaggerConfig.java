@@ -1,5 +1,6 @@
-package config;
+package com.xiaozhuanglt.mitutucue.config;
 
+import org.slf4j.MDC;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -32,6 +33,7 @@ public class SwaggerConfig {
     }
 
     private ApiInfo apiInfo() {
+
         return new ApiInfoBuilder()
                 .title("mitutucue-swagger Api")
                 .description("api根地址：http://localhost:8080/")

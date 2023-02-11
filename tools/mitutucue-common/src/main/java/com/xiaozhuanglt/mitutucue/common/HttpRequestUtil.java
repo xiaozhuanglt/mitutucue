@@ -1,4 +1,4 @@
-package com.xiaozhuantlt.mitutucue.common;
+package com.xiaozhuanglt.mitutucue.common;
 
 import net.sf.json.JSONArray;
 import org.slf4j.Logger;

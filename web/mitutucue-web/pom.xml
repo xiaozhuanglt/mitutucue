@@ -179,6 +179,12 @@
             <groupId>com.xiaozhuanglt</groupId>
             <artifactId>mitutucue-service</artifactId>
             <version>1.0.0</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>log4j</artifactId>
+                    <groupId>log4j</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.xiaozhuanglt</groupId>
@@ -219,21 +225,27 @@
             <artifactId>dubbo-configcenter-nacos</artifactId>
             <exclusions>
                 <exclusion>
-                    <groupId>com.alibaba.nacos</groupId>
-                    <artifactId>nacos-client</artifactId>
+                    <artifactId>log4j</artifactId>
+                    <groupId>log4j</groupId>
                 </exclusion>
             </exclusions>
+            <!-- <exclusions>
+                 <exclusion>
+                     <groupId>com.alibaba.nacos</groupId>
+                     <artifactId>nacos-client</artifactId>
+                 </exclusion>
+             </exclusions>-->
         </dependency>
 
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-registry-nacos</artifactId>
-            <exclusions>
+            <!--<exclusions>
                 <exclusion>
                     <groupId>com.alibaba.nacos</groupId>
                     <artifactId>nacos-client</artifactId>
                 </exclusion>
-            </exclusions>
+            </exclusions>-->
         </dependency>
         <!--end-->
 

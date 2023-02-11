@@ -20,16 +20,18 @@
 
     <!--2.7版本开始将注册中心分为3部分-->
    <!--注册中心-->
-    <dubbo:registry address="nacos://127.0.0.1:8848"  timeout="1000" />
+    <dubbo:registry address="nacos://127.0.0.1:8848"  timeout="3000" />
     <!--配置中心-->
+<!--
     <dubbo:config-center address="nacos://127.0.0.1:8848" timeout="1000" />
+-->
     <!--源数据-->
-    <dubbo:metadata-report address="nacos://127.0.0.1:8848" timeout="1000"/>
+    <dubbo:metadata-report address="nacos://127.0.0.1:8848" timeout="3000"/>
 
-   <!-- &lt;!&ndash; Greeting服务 -->
+    <!-- &lt;!&ndash; Greeting服务 -->
     <bean id="demoFacade" class="com.xiaozhuanglt.mitutucue.service.facadeimpl.DemoFacadeImpl" />
 
-    <dubbo:service interface="com.xiaozhuanglt.mitutucue.facade.DemoFacade" ref="demoFacade" version="1.0.0" group="dubbo"/>
+    <dubbo:service interface="com.xiaozhuanglt.mitutucue.facade.DemoFacade" ref="demoFacade" version="1.0.0" group="dubbo" filter="traceIdFilter"/>
 
-    <!--<dubbo:service interface="com.xiaozhuanglt.mitutucue.facade.DemoFacade" ref="demoFacade" protocol="dubbo" version="1.0.0" delay="-1" timeout="20000" />-->
+    <!--<dubbo:service interface="DemoFacade" ref="demoFacade" protocol="dubbo" version="1.0.0" delay="-1" timeout="20000" />-->
 </beans>

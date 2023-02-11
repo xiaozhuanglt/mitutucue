@@ -1,9 +1,9 @@
 package com.xiaozhuanglt.mitutucue.service.impl;
 
+import com.xiaozhuanglt.mitutucue.common.HttpRequestUtil;
+import com.xiaozhuanglt.mitutucue.common.IncrementalEncoder;
 import com.xiaozhuanglt.mitutucue.model.AmapApiDistrictJsonRO;
 import com.xiaozhuanglt.mitutucue.service.interfaces.AmapService;
-import com.xiaozhuantlt.mitutucue.common.HttpRequestUtil;
-import com.xiaozhuantlt.mitutucue.common.IncrementalEncoder;
 import net.sf.cglib.beans.BeanMap;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -12,8 +12,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * @Auther: chejiebin
@@ -29,7 +27,7 @@ public class AmapServiceImpl implements AmapService {
      * @date  2019/1/23/023 14:18
      * @param requestUrl 请求路径
      * @param requestMethod 请求方式 POST、GET
-     * @return {@link List< AmapApiDistrictJsonRO >}
+     * @return {@link List<  AmapApiDistrictJsonRO  >}
      */
     @Override
     public List<AmapApiDistrictJsonRO> downloadAmapDistrict(String requestUrl, String requestMethod,Long virtualParentId) {
