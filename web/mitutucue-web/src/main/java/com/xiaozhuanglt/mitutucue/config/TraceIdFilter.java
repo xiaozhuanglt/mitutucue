@@ -28,7 +28,6 @@ public class TraceIdFilter implements Filter {
                 traceId = UUID.randomUUID().toString();
                 rpcServiceContext.setAttachment("traceId",traceId);
             }
-            String traceId1 = MDC.get("traceId");
             MDC.put("traceId", traceId);
 
         }
@@ -38,7 +37,6 @@ public class TraceIdFilter implements Filter {
                 traceId = UUID.randomUUID().toString();
                 rpcServiceContext.setAttachment("traceId",traceId);
             }
-            String traceId1 = MDC.get("traceId");
             MDC.put("traceId", traceId);
         }
         return invoker.invoke(invocation);
