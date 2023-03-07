@@ -7,7 +7,7 @@
     <description>Dubbo Demo Service</description>
     <!-- 提供方应用信息，用于计算依赖关系 -->
     <dubbo:application name="nacos-registry-provider" />
-    <dubbo:provider token="true"/>
+    <dubbo:provider token="false"/>
     <!-- 用dubbo协议在随机端口暴露服务 -->
     <dubbo:protocol id="dubbo" name="dubbo" port="-1"/>
 

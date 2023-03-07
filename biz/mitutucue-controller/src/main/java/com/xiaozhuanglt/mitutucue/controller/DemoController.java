@@ -33,6 +33,7 @@ public class DemoController {
     @ApiOperation("查询地址")
     @GetMapping("/queryArea")
     public int queryArea(Long areaId){
+
         int i = serviceDemo.queryArea(areaId);
         return i;
     }

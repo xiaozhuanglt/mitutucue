@@ -21,10 +21,10 @@ public class DemoFacadeImpl implements DemoFacade {
     @Override
     public int queryArea(Long areaId) {
         try {
-            System.out.println("=========1:"+ MDC.get("traceId"));
+            System.out.println("=========1:"+ MDC.get("MDCID"));
             logger.info("收到queryArea 的查询请求，areaId:"+areaId);
             int i = serviceDemo.queryArea(areaId);
-            System.out.println("=========2:"+MDC.get("traceId"));
+            System.out.println("=========2:"+MDC.get("MDCID"));
             return i;
         } catch (Exception e) {
             logger.error("查询queryArea错误：",e);

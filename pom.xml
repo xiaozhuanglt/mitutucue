@@ -278,8 +278,13 @@
             <version>${kotlin.version}</version>
             <scope>test</scope>
         </dependency>
-
         <!--end-->
+        <!--skywalking trace-->
+        <dependency>
+            <groupId>org.apache.skywalking</groupId>
+            <artifactId>apm-toolkit-log4j-2.x</artifactId>
+            <version>8.14.0</version>
+        </dependency>
 
     </dependencies>
 
